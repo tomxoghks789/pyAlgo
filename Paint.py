@@ -1,4 +1,3 @@
-
 import sys
 from collections import deque
 
@@ -25,8 +24,9 @@ def bfs(x, y):
         for i in range(len(direction)):
             nx = x + direction[i][0]
             ny = y + direction[i][1]
-            qx.append(nx)
-            qy.append(ny)
+            if check(nx, ny):
+                qx.append(nx)
+                qy.append(ny)
     counter.append(count)
 
 
@@ -43,6 +43,7 @@ for i in range(N):
     temp = temp.replace(" ", "")
     for j in range(M):
         mapData[i][j] = int(temp[j])
+
 
 # 돌려
 for i in range(N):
