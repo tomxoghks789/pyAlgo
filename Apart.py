@@ -1,54 +1,47 @@
-# 백준 2667 단지번호붙이기
-
-import sys
 from collections import deque
+import sys
 
 N = int(input())
 
 mapData = [[0] * N for _ in range(N)]
-visited = [[0 for _ in range(N)] for _ in range(N)]
-
-direction = [[-1, 0], [0, -1], [1, 0], [0, 1]]
+visited = [[0] * N for _ in range(N)]
+direction = [[-1, 0], [1, 0], [0, 1], [0, -1]]
 counter = []
 
-
-def bfs(x, y):
-    qx = deque([x])
-    qy = deque([y])
-    count = 0
-    while qx:
-        x = qx.popleft()
-        y = qy.popleft()
-        if check(x, y) == 0:
-            continue
-        count = count + 1
-        visited[x][y] = 1
-        for i in range(len(direction)):
-            nx = x + direction[i][0]
-            ny = y + direction[i][1]
-            qx.append(nx)
-            qy.append(ny)
-    counter.append(count)
-
-
-def check(x, y):
-    if x < 0 or y < 0 or x >= N or y >= N or mapData[x][y] == 0 or visited[x][y] == 1:
-        return 0
-    else:
-        return 1
-
-
-# 입력
 for i in range(N):
     temp = sys.stdin.readline()
     for j in range(N):
         mapData[i][j] = int(temp[j])
 
+def bfs(x, y):
+    qx = deque([x])
+    qy = deque([y])
+    visited[x][y] = 1
+    count = 1
+
+    while qx:
+        x = qx.popleft()
+        y = qy.popleft()
+
+        for i in range(len(direction)):
+
+            nx = x + direction[i][0]
+            ny = y + direction[i][1]
+            if 0 <= nx < N and 0 <= ny < N:
+                if visited[nx][ny] == 0 and mapData[nx][ny]:
+                    qx.append(nx)
+                    qy.append(ny)
+                    count = count + 1
+                    visited[nx][ny] = 1
+    counter.append(count)
+
+
 # 돌려
 for i in range(N):
     for j in range(N):
-        if check(i, j):
+        if mapData[i][j] and not visited[i][j]:
             bfs(i, j)
+
 
 print(len(counter))
 counter = sorted(counter)
