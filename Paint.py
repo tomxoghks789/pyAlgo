@@ -1,54 +1,41 @@
-import sys
 from collections import deque
 
 N, M = map(int, input().split())
 
-mapData = [[0 for _ in range(M)] for _ in range(N)]
-visited = [[0 for _ in range(M)] for _ in range(N)]
+mapData = [list(map(int, input().split())) for i in range(N)]
+visited = [[0] * M for _ in range(N)]
 
-direction = [[-1, 0], [0, -1], [1, 0], [0, 1]]
+direction = [[-1, 0], [1, 0], [0, 1], [0, -1]]
 counter = []
 
 
 def bfs(x, y):
     qx = deque([x])
     qy = deque([y])
-    count = 0
+    visited[x][y] = 1
+    count = 1
+
     while qx:
         x = qx.popleft()
         y = qy.popleft()
-        if check(x, y) == 0:
-            continue
-        count = count + 1
-        visited[x][y] = 1
+
         for i in range(len(direction)):
+
             nx = x + direction[i][0]
             ny = y + direction[i][1]
-            if check(nx, ny):
-                qx.append(nx)
-                qy.append(ny)
+            if 0 <= nx < N and 0 <= ny < M:
+                if visited[nx][ny] == 0 and mapData[nx][ny]:
+                    qx.append(nx)
+                    qy.append(ny)
+                    count = count + 1
+                    visited[nx][ny] = 1
     counter.append(count)
-
-
-def check(x, y):
-    if x < 0 or y < 0 or x >= N or y >= M or mapData[x][y] == 0 or visited[x][y] == 1:
-        return 0
-    else:
-        return 1
-
-
-# 입력
-for i in range(N):
-    temp = sys.stdin.readline()
-    temp = temp.replace(" ", "")
-    for j in range(M):
-        mapData[i][j] = int(temp[j])
 
 
 # 돌려
 for i in range(N):
     for j in range(M):
-        if check(i, j):
+        if mapData[i][j] and not visited[i][j]:
             bfs(i, j)
 
 if not counter:
