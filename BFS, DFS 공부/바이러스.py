@@ -1,4 +1,5 @@
 from collections import deque
+
 def bfs(graph):
     visited = []
     que = deque([1])
