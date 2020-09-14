@@ -17,26 +17,12 @@ def find():
         if temp == K:
             break
 
-        nx = temp + 1
-        if N <= nx < K:
-            if nx not in visited:
-                que.append(nx)
-                visited.append(nx)
-                qc.append(c + 1)
-
-        nx = temp - 1
-        if N <= nx < K:
-            if nx not in visited:
-                que.append(nx)
-                visited.append(nx)
-                qc.append(c + 1)
-
-        nx = temp * 2
-        if N <= nx < K:
-            if nx not in visited:
-                que.append(nx)
-                visited.append(nx)
-                qc.append(c + 1)
+        for nx in (temp+1, temp-1, temp*2):
+            if N <= nx < K:
+                if nx not in visited:
+                    que.append(nx)
+                    visited.append(nx)
+                    qc.append(c + 1)
 
     return counter
 
