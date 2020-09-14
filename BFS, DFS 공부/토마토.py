@@ -36,5 +36,4 @@ for i in range(y):
     if mapData[i].count(0) >= 1:
         result = -1
         break
-if result != -1:
-    print(result)
+print(result)
