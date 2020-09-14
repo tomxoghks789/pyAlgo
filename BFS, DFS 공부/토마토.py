@@ -19,7 +19,9 @@ def bfs(i, j):
     while not que.empty():
         flag = 0
         tx, ty = que.get()
-        # c = qc.get()
+        global counter
+        c = qc.get()
+        counter = c
         for i in range(len(direction)):
             nx = tx + direction[i][0]
             ny = ty + direction[i][1]
@@ -28,6 +30,7 @@ def bfs(i, j):
                     visited[nx][ny] = 1
                     mapData[nx][ny] = 1
                     que.put([nx, ny])
+                    qc.put(c + 1)
         #             flag = 1
         # if flag == 1:
         #     global counter
