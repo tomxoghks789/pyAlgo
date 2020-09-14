@@ -21,10 +21,8 @@ def bfs(tQ):
                         tQ.append([nx, ny])
     return counter
 
-
 tempQue = deque()
 
-#입력
 for i in range(y):
     temp = sys.stdin.readline().split()
     for j in range(x):
@@ -34,10 +32,9 @@ for i in range(y):
             tempQue.append([i, j])
 
 result = bfs(tempQue)
-flag = 0
 for i in range(y):
     if mapData[i].count(0) >= 1:
         result = -1
         break
-if not flag:
+if result != -1:
     print(result)
