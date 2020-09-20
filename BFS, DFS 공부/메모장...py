@@ -1,0 +1,6 @@
+nodes = list(range(1, 6 + 1))
+print(nodes)
+nodes.remove(1)
+print(nodes)
+nodes.remove(2)
+print(nodes[0])
