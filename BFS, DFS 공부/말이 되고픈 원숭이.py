@@ -20,11 +20,11 @@ def BFS(K):
             break
         if K > 0:
             for i in range(len(kDirection)):
+                # 여기에 가는길에 뭐 없나 체크
                 nx = tx + kDirection[i][0]
                 ny = ty + kDirection[i][1]
                 if 0<= nx < H and 0 <= ny < W:
                     if not data[nx][ny] and not visited[nx][ny]:
-                        # 여기에 가는길에 뭐 없나 체크
                         que.put([nx, ny, tc +1])
                         visited[nx][ny] = 1
                         K = K - 1
@@ -42,6 +42,7 @@ def BFS(K):
 
 direction = [[-1, 0], [1, 0], [0, 1], [0, -1]]
 kDirection = [[-1, -2], [-2, -1], [-2, 1], [-1, 2], [1, 2], [2, 1], [2, -1], [1, -2]]
+spaceDirection = [[]]
 
 for _ in range(H):
     data.append(list(map(int, sys.stdin.readline().split())))
