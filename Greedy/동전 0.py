@@ -12,7 +12,7 @@ for _ in range(N):
 A.reverse()
 
 for i in A:
-    x, y = divmod(K, i)
+    x = K // i
     K -= x * i
     counter += x
 
