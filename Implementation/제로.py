@@ -1,9 +1,10 @@
 # 10773번
-N = int(input())
+import sys
+N = int(sys.stdin.readline())
 ans = []
 for i in range(N):
-    temp = int(input())
-    if temp == 0 and len(ans) != 0:
+    temp = int(sys.stdin.readline())
+    if temp == 0:
         ans.pop()
     else:
         ans.append(temp)
