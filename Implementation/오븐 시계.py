@@ -1,3 +1,4 @@
+# 2525
 hour, minTime = map(int, input().split())
 minute = int(input())
 
