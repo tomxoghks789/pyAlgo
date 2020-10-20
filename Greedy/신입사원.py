@@ -1,10 +1,10 @@
 # 1946
 import sys
 
-def greedy(sd):
-    ans = 0
-    current = 100001
-    for i in range(1, len(sd)):
+def greedy(sd, N):
+    ans = 1
+    current = sd[1]
+    for i in range(2, N +1):
         temp = sd[i]
         if temp < current:
             ans += 1
@@ -19,4 +19,4 @@ for _ in range(T):
     for _ in range(N):
         x, y = map(int, sys.stdin.readline().split())
         scoreData[x] = y
-    print(greedy(scoreData))
+    print(greedy(scoreData, N))
