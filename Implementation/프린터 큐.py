@@ -8,15 +8,15 @@ for i in range(T):
     tc = list(map(int, sys.stdin.readline().split()))
     tm = [0] * N
     tm[M] = 1
-
+    popData = max(tc)
     while True:
-        popData = max(tc)
         tempM = tm.pop(0)
         tempC = tc.pop(0)
         if tempC == popData:
             ans += 1
             if tempM == 1:
                 break
+            popData = max(tc)
         else:
             tc.append(tempC)
             tm.append(tempM)
