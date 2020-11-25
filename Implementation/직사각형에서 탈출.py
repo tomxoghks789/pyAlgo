@@ -1,5 +1,4 @@
 # 1085
 
-x, y, w, h = map(int, input().split())
-ans = [x, y, w - x, h - y]
+ans = list(map(int, input().split()))
 print(min(ans))
