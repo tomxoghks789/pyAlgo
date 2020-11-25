@@ -8,4 +8,3 @@ for i in range(5):
     if car[i][-1] == N:
         ans += 1
 print(ans)
-
