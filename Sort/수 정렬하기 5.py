@@ -1,14 +1,13 @@
 # 15688
 
 import sys
+import heapq
 
-LIMIT = 1000001
-data = [0] * LIMIT
-dataLen = int(input())
+dataHeap = []
+dataLen = int(sys.stdin.readline())
+
 for i in range(dataLen):
-    data[abs(int(sys.stdin.readline()))] += 1
-for i in range(LIMIT):
-    dataVal = data[i]
-    if dataVal != 0:
-        for j in range(dataVal):
-            print(i)
+    heapq.heappush(dataHeap, int(sys.stdin.readline()))
+
+while dataHeap:
+    print(heapq.heappop(dataHeap))
