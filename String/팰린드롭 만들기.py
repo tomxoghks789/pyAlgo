@@ -1,11 +1,10 @@
 # 1213
 
 def palindrome(str):
-    oddCount = 0
-    oddChar = ''
     strAns = ''
     ans = [0] * 26
-
+    oddCount = 0
+    oddChar = ''
     for i in str:
         ans[ord(i)  - 65] += 1
 
