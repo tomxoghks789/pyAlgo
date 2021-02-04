@@ -3,7 +3,6 @@
 from itertools import combinations
 
 N, S = map(int, input().split())
-
 dataList = list(map(int, input().split()))
 ans = 0
 
