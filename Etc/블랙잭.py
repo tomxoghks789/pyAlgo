@@ -12,5 +12,4 @@ for i in range(len(dataList)):
 if M in ans:
     print(M)
 else:
-    ans.sort()
-    print(ans[-1])
+    print(max(ans))
