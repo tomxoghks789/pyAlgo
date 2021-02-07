@@ -14,17 +14,14 @@ for i in range(N - 1):
 
 que = deque([1])
 visited = [0] * (N + 1)
-print(mapData)
+
 while que:
     now = que.popleft()
     for i in mapData[now]:
-        print(i)
         if not visited[i]:
             ans[i] = now
             que.append(i)
             visited[i] = 1
-    print(ans)
-    print()
 for i in ans[2:]:
     print(i)
 
